@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Una Carta para Ti</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Lora", serif;
+      background-color: #fff1f2;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .handwriting {
+      font-family: "Dancing Script", cursive;
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .animate-fadeOut {
+      animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+    }
+
+    #gif-container {
+      cursor: pointer;
+      max-width: 320px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(219, 39, 119, 0.3);
+      user-select: none;
+      overflow: hidden;
+      z-index: 20;
+      transition: none;
+    }
+
+    #gif-container:hover {
+      transform: none;
+    }
+
+    #floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url("https://cdn-icons-png.flaticon.com/512/833/833472.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+      animation: floatHeart 10s linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #letter {
+        padding: 2rem !important;
+        font-size: 1rem;
+      }
+    }
+
+    #letter {
+      position: relative;
+    }
+    .corner-gif {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.5);
+      user-select: none;
+      pointer-events: none;
+    }
+    .corner-top-right {
+      top: 16px;
+      right: 16px;
+    }
+    .corner-bottom-left {
+      bottom: 16px;
+      left: 16px;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col justify-center items-center min-h-screen p-4 relative">
+  <!-- Fondo de corazones infinitos -->
+  <div id="floating-hearts"></div>
+
+  <!-- 🎵 Audio romántico oculto -->
+  <audio id="background-audio" src="5.mp3" preload="auto" loop></audio>
+
+  <!-- Imagen previa -->
+  <div id="gif-container" tabindex="0" role="button" aria-label="Abrir la carta">
+    <img
+      id="static-image"
+      src="images.png"
+      alt="Haz clic para abrir la carta"
+      style="border-radius: 12px; width: 100%; height: auto;"
+      draggable="false"
+    />
+  </div>
+
+  <!-- Carta oculta -->
+  <article
+    id="letter"
+    style="display: none;"
+    class="w-full max-w-2xl mx-auto bg-white/90 backdrop-blur-sm rounded-lg shadow-2xl p-8 sm:p-12 md:p-16 border border-rose-200 hidden z-10"
+    role="document"
+    tabindex="-1"
+  >
+    <!-- Gif esquina superior derecha -->
+    <img
+      src="1.gif"
+      alt="Gif romántico esquina superior derecha"
+      class="corner-gif corner-top-right"
+      draggable="false"
+    />
+
+    <!-- Gif esquina inferior izquierda -->
+    <img
+      src="2.gif"
+      alt="Gif romántico esquina inferior izquierda"
+      class="corner-gif corner-bottom-left"
+      draggable="false"
+    />
+
+    <header>
+      <h1 class="handwriting text-4xl text-rose-800 mb-8">Mi amorcito,</h1>
+    </header>
+
+    <section
+      class="prose prose-rose max-w-none text-gray-700 leading-relaxed"
+      tabindex="0"
+    >
+      <p>
+        No sabes cuánto me emociona escribirte estas palabras. A veces el corazón siente tanto,
+        que necesita escaparse entre letras para poder decírtelo todo.
+      </p>
+      <p>
+        Desde que llegaste a mi vida, todo cambió. Mis días tienen más luz, mis sonrisas más razón,
+        y mi mundo… más de ti. Tu risa es mi canción favorita y tus abrazos son el lugar donde
+        todo está bien.
+      </p>
+      <p>
+        Me haces sentir en casa aunque estemos lejos, y solo tú logras que cualquier momento se
+        vuelva especial. Gracias por existir, por cada gesto, por cada mirada, por todo lo que eres.
+      </p>
+      <p>
+        Quiero seguir a tu lado en cada paso, construir recuerdos que se sientan eternos y amarte
+        como mereces, sin medida y sin prisa.
+      </p>
+      <p>
+        Te amo con todo mi corazón. Hoy, mañana… y cada día que me regales.
+      </p>
+
+      <div class="mt-8 flex justify-center">
+        <img
+          src="o.jpg"
+          alt="Pareja abrazándose bajo la luz del atardecer"
+          class="rounded-xl shadow-lg max-w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <footer class="mt-12 text-right">
+      <p class="text-gray-700">Con todo mi amor,</p>
+      <p class="handwriting text-3xl text-rose-800 mt-4 select-text">[yo]</p>
+    </footer>
+  </article>
+
+  <script>
+    const gifContainer = document.getElementById("gif-container");
+    const letter = document.getElementById("letter");
+    const staticImage = document.getElementById("static-image");
+    const floatingHeartsContainer = document.getElementById("floating-hearts");
+    const audio = document.getElementById("background-audio");
+
+    function createFloatingHearts() {
+      const count = 20;
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("floating-heart");
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDelay = `${Math.random() * 10}s`;
+        heart.style.animationDuration = `${8 + Math.random() * 5}s`;
+        const size = 30 + Math.random() * 30;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        floatingHeartsContainer.appendChild(heart);
+      }
+    }
+
+    function showHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        const left = Math.random() * 100;
+        const delay = Math.random() * 1.5;
+        const size = 50 + Math.random() * 30;
+        heart.style.left = `${left}vw`;
+        heart.style.animationDelay = `${delay}s`;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+
+    function openLetter() {
+      staticImage.src =
+        "https://media.baamboozle.com/uploads/images/842462/1664484298_96708_gif-url.gif";
+      showHearts();
+
+      // 🎵 Reproduce el audio
+      audio.volume = 0.5;
+      audio.play().catch((e) => {
+        console.log("Autoplay bloqueado por el navegador:", e);
+      });
+
+      const gifDuration = 1000;
+      setTimeout(() => {
+        gifContainer.classList.add("animate-fadeOut");
+        setTimeout(() => {
+          gifContainer.style.display = "none";
+          letter.style.display = "block";
+          letter.classList.remove("hidden");
+          letter.classList.add("animate-fadeIn");
+          letter.focus();
+        }, 500);
+      }, gifDuration);
+    }
+
+    gifContainer.addEventListener("click", openLetter);
+    gifContainer.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLetter();
+      }
+    });
+
+    createFloatingHearts();
+  </script>
+</body>
+</html>
